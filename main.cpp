@@ -22,9 +22,8 @@ Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values) {
 	if (nodes.size() != NODES_AMOUNT)
 		return Polynomial();
 
-	Polynomial* LGBase = new Polynomial[NODES_AMOUNT];
+	Polynomial LGBase, result, tem;
 	double temp;
-	Polynomial tem;
 
 	for (int i = 0; i < NODES_AMOUNT; i++) {
 		temp = 1;
@@ -39,14 +38,13 @@ Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values) {
 		}
 
 		temp = 1 / temp;
-		LGBase[i] = tem * temp;
+		tem = tem * temp;
+
+		if (i == 0)
+			result = tem * values[0];
+		else
+			result = result + (tem * values[i]);
 	}
 
-	Polynomial result = LGBase[0] * values[0];
-	for (int i = 1; i < NODES_AMOUNT; i++) {
-		result = result + (LGBase[i] * values[i]);
-	}
-
-	delete[] LGBase;
 	return result;
 }
