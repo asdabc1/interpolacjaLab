@@ -22,7 +22,7 @@ Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values) {
 	if (nodes.size() != NODES_AMOUNT)
 		return Polynomial();
 
-	Polynomial LGBase, result, tem;
+	Polynomial result, tem;
 	double temp;
 
 	for (int i = 0; i < NODES_AMOUNT; i++) {
