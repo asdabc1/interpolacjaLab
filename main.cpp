@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "polynomial.h"
 
-Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values);
+Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values); //nodes should contain unique values
 
 int main() {
 	using namespace std;
@@ -17,10 +17,6 @@ int main() {
 
 Polynomial Lagrange(std::vector<double>& nodes, std::vector<double>& values) {
 	const int NODES_AMOUNT = nodes.size();
-
-	std::unique(nodes.begin(), nodes.end());
-	if (nodes.size() != NODES_AMOUNT)
-		return Polynomial();
 
 	Polynomial result, tem;
 	double temp;
